@@ -9,8 +9,11 @@ plain='\033[0m'
 # if [[ -n $1 ]] && [[ $2 == e2-* ]] && [[ -n $3 ]] && [[ -n $4 ]] && [[ -n $8 ]] && [[ $(($(date +%s) - $8)) -lt 120 ]] && [[ $(($(date +%s) - $8)) -ge 0 ]]; then
 #if [[ -n cluster-404-m ]] && [[ $2 == e2-standard-4 ]] && [[ -n asia-southeast1-b ]] && [[ -n firewall ]] && [[ -n 404 ]] && [[ $(($(date +%s) - 404)) -lt 120 ]] && [[ $(($(date +%s) - 404)) -ge 0 ]]; then
 
+echo -e "${yellow}Creating Region ...${plain}"
+gcloud config set compute/zone us-central1-b
+
 echo -e "${yellow}Creating instance ...${plain}"
-instance=$(gcloud beta container clusters create "cluster-1" --zone "asia-east1-b" --no-enable-basic-auth --cluster-version "1.27.3-gke.100" --release-channel "regular" --machine-type "e2-medium" --image-type "UBUNTU_CONTAINERD" --disk-type "pd-balanced" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "3" --enable-ip-alias --network "global/networks/default" --subnetwork "regions/asia-east1/subnetworks/default" --no-enable-intra-node-visibility --default-max-pods-per-node "110" --security-posture=disabled --workload-vulnerability-scanning=disabled --no-enable-master-authorized-networks --addons HorizontalPodAutoscaling,HttpLoadBalancing --enable-autoupgrade --enable-autorepair --max-surge-upgrade 1 --max-unavailable-upgrade 0 --no-enable-managed-prometheus --node-locations "asia-east1-b")
+instance=$(gcloud container clusters create bootcamp --image-type "UBUNTU_CONTAINERD" --num-nodes 1 --scopes "https://www.googleapis.com/auth/projecthosting,storage-rw")
 echo -e "${green}Instance created.${plain}"
 
 echo -e "${yellow}Checking firewall rule ...${plain}"
@@ -22,11 +25,11 @@ gcloud compute firewall-rules create firewall --direction=INGRESS --priority=100
 echo -e "${green}Firewall rule created.${plain}"
 fi
 
-echo -e "\n${yellow}GCP UNITED-STATED SERVER 🇺🇲 ${plain}\n"
+echo -e "\n${red}GCP US SERVER 🇺🇲 ${plain}\n"
 
  # echo -e "Username: ${green}$5${plain}, Password: ${green}$6${plain}, SSH Host :  ${green}$(grep -oP '(?<=EXTERNAL_IP: ).*' <<<"$instance")${plain}"
- # echo -e "SSH Host :  ${green}$(grep -oP '(?<=EXTERNAL_IP: ).*' <<<"$instance")${plain}"
- # echo ""
+echo -e "SSH Host :  ${green}$(grep -oP '(?<=EXTERNAL_IP: ).*' <<<"$instance")${plain}"
+echo ""
 echo "------------------------------------"
 printf "  Proudly developed the script by  \n"
 echo "------------------------------------"
