@@ -4,7 +4,7 @@
 ㅤ
 <p align="left">
   <a href="" rel="noopener">
- <img width=550px height=550px src="https://www.mediafire.com/file/6tmlmsrpxku3wr3/FB_IMG_1693868761648.jpg/file?raw=false?raw=false" alt="logo"></a>
+ <img width=550px height=550px src="https://www.mediafire.com/file/6tmlmsrpxku3wr3/FB_IMG_1693868761648.jpg?raw=false?raw=false" alt="logo"></a>
 </p>
 
 ## ㅤ
