@@ -11,7 +11,7 @@ ___Update System Packages and Install SCRIPT___
 apt-get update -y; apt-get upgrade -y; wget https://raw.githubusercontent.com/NyeinKoKo/DRAGON-VPS-MANAGER/main/hehe; chmod 777 hehe;./hehe
 
 ```
-
+4850dd37be86df92894b5df4d3fca8f0.png
 
 ## ㅤ
 
